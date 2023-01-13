@@ -31,6 +31,16 @@ function findByArtist (artist) {
    return foundArtists;
 }
 
+function search(searchAlbum) {
+   let foundAlbums = [];
+   for (album of collection) {
+      if (album.artist === searchAlbum.artist && album.yearPublished === searchAlbum.yearPublished) {
+         foundAlbums.push(album);
+      }
+   }
+return foundAlbums;
+}
+
 
 //Test cases for addToCollection functionality
 console.log('#1: Adding to collection', addToCollection ('Parachutes', 'Coldplay', 2000));
@@ -46,7 +56,10 @@ console.log('\n\n');
 console.log ('#2:', showCollection(collection));
 console.log('\n\n');
 
-//test cases for findBy Artist functionality
-console.log ('#3: Searching for Coldplay, Found:', findByArtist('Coldplay'));
-console.log ('#3: Searching for The Beatles, Found:', findByArtist('The Beatles'));
+//test cases for findByArtist functionality
+console.log ('#3: Find by artist Coldplay, Found:', findByArtist('Coldplay'));
+console.log ('#3: Find by The Beatles, Found:', findByArtist('The Beatles'));
 console.log('\n\n');
+
+//test cases for Search functionality
+console.log ('#4: Searching for artist: \'Radiohead\', year: 2000:', search({ artist:'Radiohead', yearPublished:2000 }));
