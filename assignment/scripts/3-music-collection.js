@@ -40,10 +40,26 @@ function search(searchAlbum) {
       }
    }
    return foundAlbums;
-}
-else {
-   return collection;
-}
+   }
+   if (searchAlbum.artist) {
+      for (album of collection) {
+         if (album.artist === searchAlbum.artist) {
+            foundAlbums.push(album);
+         }
+      }
+      return foundAlbums;
+   }
+   if (searchAlbum.yearPublished) {
+      for (album of collection) {
+         if (album.yearPublished === searchAlbum.yearPublished) {
+            foundAlbums.push(album);
+         }
+      }
+      return foundAlbums;
+   }
+   else {
+      return collection;
+   }
 }
 
 
@@ -71,5 +87,6 @@ console.log('\n\n');
 console.log ('#4: Searching for artist: \'Radiohead\', year: 2000:', search({ artist:'Radiohead', yearPublished:2000 }));
 console.log ('#4: Searching for artist: \'The Beatles\'', search({ artist:'The Beatles' }));
 console.log ('#4: Searching for artist: \'The Beatles\'', search({ artist:'The Beatles', yearPublished:1999 }));
-console.log ('#4: Searching for artist: \'C0N50\', year:2022', search({ artist:'C0N50', yearPublished:2022 }));
+console.log ('#4: Searching for artist: \'C0N50\', year:2022', search({ title:'Halcyon Drift', artist:'C0N50', yearPublished:2022 }));
+console.log ('#4: Searching for Year Published: year:2000', search({ yearPublished:2000 }));
 console.log('\n\n');
