@@ -33,12 +33,17 @@ function findByArtist (artist) {
 
 function search(searchAlbum) {
    let foundAlbums = [];
+   if (searchAlbum.artist && searchAlbum.yearPublished) {
    for (album of collection) {
       if (album.artist === searchAlbum.artist && album.yearPublished === searchAlbum.yearPublished) {
          foundAlbums.push(album);
       }
    }
-return foundAlbums;
+   return foundAlbums;
+}
+else {
+   return collection;
+}
 }
 
 
@@ -59,7 +64,12 @@ console.log('\n\n');
 //test cases for findByArtist functionality
 console.log ('#3: Find by artist Coldplay, Found:', findByArtist('Coldplay'));
 console.log ('#3: Find by The Beatles, Found:', findByArtist('The Beatles'));
+console.log ('#3: Find by The Beatles, Found:', findByArtist('AC/DC'));
 console.log('\n\n');
 
 //test cases for Search functionality
 console.log ('#4: Searching for artist: \'Radiohead\', year: 2000:', search({ artist:'Radiohead', yearPublished:2000 }));
+console.log ('#4: Searching for artist: \'The Beatles\'', search({ artist:'The Beatles' }));
+console.log ('#4: Searching for artist: \'The Beatles\'', search({ artist:'The Beatles', yearPublished:1999 }));
+console.log ('#4: Searching for artist: \'C0N50\', year:2022', search({ artist:'C0N50', yearPublished:2022 }));
+console.log('\n\n');
