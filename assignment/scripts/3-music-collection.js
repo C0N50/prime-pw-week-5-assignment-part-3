@@ -3,11 +3,12 @@ console.log('\n\n');
 
 let collection = [];
 
-function addToCollection(title, artist, yearPublished) {
+function addToCollection(title, artist, yearPublished, tracks) {
    let album = { 
     title: title,
     artist: artist,
-    yearPublished: yearPublished
+    yearPublished: yearPublished, 
+    tracks: []
    };
    collection.push(album);
    return album;
@@ -62,9 +63,27 @@ function search(searchAlbum) {
    }
 }
 
+//delcaring track list arrays
+let parachutesList = 
+[{name: 'Don\'t Panic', duration: '2:16'}, 
+{name: 'Shiver', duration: '5:04'},
+{name: 'Spies', duration: '5:18'},
+{name: 'Sparks', duration: '3:47'},
+{name: 'Yellow', duration: '4:26'},
+{name: 'Trouble', duration: '4:33'},
+{name: 'Parachutes', duration: '0:46'},
+{name: 'High Speed', duration: '4:16'},
+{name: 'We Never Change', duration: '4:09'},
+{name: 'Everything\'s Not Lost - Includes Hidden Track \'Life Is For Living\'', duration: '7:16'}
+];
+
+
+//test track list functionality
+console.log('Parachutes Tracklist:', parachutesList);
+console.log('\n\n');
 
 //Test cases for addToCollection functionality
-console.log('#1: Adding to collection', addToCollection ('Parachutes', 'Coldplay', 2000));
+console.log('#1: Adding to collection', addToCollection ('Parachutes', 'Coldplay', 2000, parachutesList));
 console.log('#1: Adding to collection', addToCollection ('Led Zeppelin IV', 'Led Zeppelin', 1971));
 console.log('#1: Adding to collection', addToCollection ('Revolver', 'The Beatles', 1966));
 console.log('#1: Adding to collection', addToCollection ('Kid A', 'Radiohead', 2000));
