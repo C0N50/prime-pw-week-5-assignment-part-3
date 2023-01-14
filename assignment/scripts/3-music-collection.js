@@ -287,6 +287,28 @@ function search(searchAlbum) {
    if (inputMatch) {
       return collection;
    }
+
+   //logic if user inputs object with 2 fields (title, track name)
+   if (searchAlbum.title && searchAlbum.name) { //if find input of all accepted fields in object artists, year, and track objects.
+      inputMatch = true;
+      for (let album of collection) { //loop to search all albums in the collection
+         let albumTrackList = album.tracks; //local variable to store tracklist array
+         for (let albumTrack of albumTrackList) { //loop search all tracks in track list
+               if (album.title === searchAlbum.title && albumTrack.name === searchAlbum.name) {
+                  foundAlbums.push(album);
+                  found = true;
+               }
+         }
+      }
+      if (found) {
+         return foundAlbums;
+      }
+   }
+   //if input matches but search fails return collection
+   if (inputMatch) {
+      return collection;
+   }
+
    
    //logic if user inputs object with 2 fields (artist, year Published)
    if (searchAlbum.artist && searchAlbum.yearPublished) {
@@ -306,6 +328,41 @@ function search(searchAlbum) {
       return collection;
    }
 
+      //logic if user inputs object with 2 fields (artist, title)
+      if (searchAlbum.artist && searchAlbum.title) {
+         inputMatch = true;
+         for (let album of collection) {
+            if (album.artist === searchAlbum.artist && album.yearPublished === searchAlbum.title) {
+               foundAlbums.push(album);
+               found = true;
+            }
+         }
+         if (found) {
+            return foundAlbums;
+         }
+      }
+      //if input matches but search fails return collection
+      if (inputMatch) {
+         return collection;
+      }
+
+   //logic if user inputs object with 2 fields (title, year Published)
+   if (searchAlbum.title && searchAlbum.yearPublished) {
+      inputMatch = true;
+      for (let album of collection) {
+         if (album.title === searchAlbum.title && album.yearPublished === searchAlbum.yearPublished) {
+            foundAlbums.push(album);
+            found = true;
+         }
+      }
+      if (found) {
+         return foundAlbums;
+      }
+   }
+   //if input matches but search fails return collection
+   if (inputMatch) {
+      return collection;
+   }
 
    //logic if user inputs object with 1 field (track name)
    if (searchAlbum.name) { //if find input of all accepted fields in object artists, year, and track objects.
@@ -386,6 +443,7 @@ function search(searchAlbum) {
 
    //error handling return entire collection
    else {
+      console.log('error returning collection');
       return collection;
    }
 }
@@ -436,6 +494,7 @@ console.log ('#4: Searching for Year Published & Track: 1966 & Taxman', search({
 console.log ('#4: Searching for Artist & Year Published: The Beatles & 1969', search({ artist:'The Beatles', yearPublished:1969}));
 console.log ('#4: Searching for Artist & Track: The Beatles & Come Together', search({ artist:'The Beatles', name:'Come Together'}));
 console.log ('#4: Searching for artist & year: Radiohead & 2000:', search({ artist:'Radiohead', yearPublished:2000 }));
+console.log ('#4: Searching for title & year: Halcyon Drift & 2022:', search({ title:'Halcyon Drift', yearPublished:2022 }));
 console.log('\n\n');
 
 //2 inputs should return collection array
@@ -444,6 +503,7 @@ console.log ('#4: Searching for artist & year Published: The Beatles & 1999', se
 console.log ('#4: Searching for artist & year Published: Radiohead & 2006', search({ artist:'Radiohead', yearPublished:2006 }));
 console.log ('#4: Searching for artist & year Published: U2 & 2000', search({ artist:'U2', yearPublished:2000 }));
 console.log('\n\n');
+
 
 //1 input should return search
 console.log('1 Input: Should return search')
