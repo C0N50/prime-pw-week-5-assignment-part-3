@@ -169,6 +169,7 @@ function search(searchAlbum) {
       return collection;
    }
 
+
    //search logic if user inputs object with 3 fields (yearpublished, track name, album title)
    if (searchAlbum.yearPublished && searchAlbum.name && searchAlbum.title) { //if find input of all accepted fields in object artists, year, and track objects.
       inputMatch = true;
@@ -189,7 +190,6 @@ function search(searchAlbum) {
    if (inputMatch) {
       return collection;
    }
-
    //search logic if user inputs object with 3 fields (artist, track name, album title)
    if (searchAlbum.artist && searchAlbum.name && searchAlbum.title) { //if find input of all accepted fields in object artists, year, and track objects.
       inputMatch = true;
@@ -210,7 +210,6 @@ function search(searchAlbum) {
    if (inputMatch) {
       return collection;
    }
-
    //search logic if user inputs object with 3 fields (artist, yearpublished, album title)
    if (searchAlbum.artist && searchAlbum.yearPublished && searchAlbum.title) { //if find input of all accepted fields in object artists, year, and track objects.
       inputMatch = true;
@@ -228,7 +227,6 @@ function search(searchAlbum) {
    if (inputMatch) {
       return collection;
    }
-
    //search logic if user inputs object with 3 fields (artist, yearpublished, track name)
    if (searchAlbum.artist && searchAlbum.yearPublished && searchAlbum.name) { //if find input of all accepted fields in object artists, year, and track objects.
       inputMatch = true;
@@ -250,6 +248,7 @@ function search(searchAlbum) {
       return collection;
    }
 
+
    //logic if user inputs object with 2 fields (artist, track name)
    if (searchAlbum.artist && searchAlbum.name) { //if find input of all accepted fields in object artists, year, and track objects.
       inputMatch = true;
@@ -270,8 +269,6 @@ function search(searchAlbum) {
    if (inputMatch) {
       return collection;
    }
-
-
    //logic if user inputs object with 2 fields (year Published, track name)
    if (searchAlbum.yearPublished && searchAlbum.name) { //if find input of all accepted fields in object artists, year, and track objects.
       inputMatch = true;
@@ -292,7 +289,6 @@ function search(searchAlbum) {
    if (inputMatch) {
       return collection;
    }
-
    //logic if user inputs object with 2 fields (title, track name)
    if (searchAlbum.title && searchAlbum.name) { //if find input of all accepted fields in object artists, year, and track objects.
       inputMatch = true;
@@ -313,8 +309,6 @@ function search(searchAlbum) {
    if (inputMatch) {
       return collection;
    }
-
-   
    //logic if user inputs object with 2 fields (artist, year Published)
    if (searchAlbum.artist && searchAlbum.yearPublished) {
       inputMatch = true;
@@ -332,25 +326,23 @@ function search(searchAlbum) {
    if (inputMatch) {
       return collection;
    }
-
-      //logic if user inputs object with 2 fields (artist, title)
-      if (searchAlbum.artist && searchAlbum.title) {
-         inputMatch = true;
-         for (let album of collection) {
-            if (album.artist === searchAlbum.artist && album.yearPublished === searchAlbum.title) {
-               foundAlbums.push(album);
-               found = true;
-            }
-         }
-         if (found) {
-            return foundAlbums;
+   //logic if user inputs object with 2 fields (artist, title)
+   if (searchAlbum.artist && searchAlbum.title) {
+      inputMatch = true;
+      for (let album of collection) {
+         if (album.artist === searchAlbum.artist && album.yearPublished === searchAlbum.title) {
+            foundAlbums.push(album);
+            found = true;
          }
       }
-      //if input matches but search fails return collection
-      if (inputMatch) {
-         return collection;
+      if (found) {
+         return foundAlbums;
       }
-
+   }
+   //if input matches but search fails return collection
+   if (inputMatch) {
+      return collection;
+   }
    //logic if user inputs object with 2 fields (title, year Published)
    if (searchAlbum.title && searchAlbum.yearPublished) {
       inputMatch = true;
@@ -369,6 +361,7 @@ function search(searchAlbum) {
       return collection;
    }
 
+   
    //logic if user inputs object with 1 field (track name)
    if (searchAlbum.name) { //if find input of all accepted fields in object artists, year, and track objects.
       inputMatch = true;
@@ -389,8 +382,6 @@ function search(searchAlbum) {
    if (inputMatch) {
       return collection;
    }
-
-
     //logic if user inputs object with 1 fields (artist)
    if (searchAlbum.artist) {
       inputMatch = true;
@@ -408,7 +399,6 @@ function search(searchAlbum) {
    if (inputMatch) {
       return collection;
    }
-
     //logic if user inputs object with 1 fields (year Published)
    if (searchAlbum.yearPublished) {
       inputMatch = true;
@@ -426,7 +416,6 @@ function search(searchAlbum) {
    if (inputMatch) {
       return collection;
    }
-   
    //logic if user inputs object with 1 fields (title)
    if (searchAlbum.title) {
       inputMatch = true;
@@ -480,7 +469,9 @@ console.log('\n\n');
 //test cases for Search functionality
 
 //4 inputs should return search
-
+console.log('4 Inputs: Should return search')
+console.log ('#4: Searching for title, artist, & year, & Track: C0N50 & 2022', search({ name:'Stairway to Heaven', title:'Led Zeppelin IV', artist:'Led Zeppelin', yearPublished:1971 }));
+console.log('\n\n');
 
 //3 inputs should return search
 console.log('3 Inputs: Should return search')
@@ -524,6 +515,7 @@ console.log ('#4: Searching for Year Published: 3000', search({ yearPublished:39
 console.log ('#4: Searching for Artist: Wheezer', search({ artist:'Wheezer'}));
 console.log ('#4: Searching for Title: The White Album', search({ title:'The White Album'}));
 console.log ('#4: Searching for Track Name: Bohemian Rhapsody', search({ title:'Bohemian Rhapsody'}));
+console.log('\n\n');
 
 //0 inputs should return collection array or error out
 console.log('0 inputs should return collection array or error out')
