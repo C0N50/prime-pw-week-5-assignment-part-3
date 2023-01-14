@@ -1,12 +1,11 @@
 console.log('***** Music Collection *****')
 console.log('\n\n');
 
-//Declaring Global Variables
-
+//Global Variables
 //declaring collection array
 let collection = [];
 
-//delcaring track list arrays
+//track list array Declarations
 let parachutes = 
 [
    {name: 'Don\'t Panic', duration: '2:16'}, 
@@ -98,8 +97,7 @@ let halcyonDrift =
 ]
 
 
-
-
+//Function Delcarations
 
 function addToCollection(title, artist, yearPublished, tracks) {
    let album = { 
@@ -115,7 +113,14 @@ function addToCollection(title, artist, yearPublished, tracks) {
 function showCollection(collection) {
    console.log('Size of collection:', collection.length);
    for (album of collection) {
-      console.log (album.title + ' by ' + album.artist + ' published in ' + album.yearPublished);
+      console.log (`${album.title} by ${album.artist} published in ${album.yearPublished} :`);
+      let songList = album.tracks;
+      let trackNumber = 1;
+      for (song of songList) {
+         console.log (`${trackNumber}. ${song.name}: ${song.duration}`); 
+         trackNumber++;
+      }
+
    }
    return true;
 } //end showCollection
