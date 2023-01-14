@@ -143,6 +143,11 @@ function search(searchAlbum) {
    inputMatch = false;  //set to true when the code block matches the input.
    found = false; //set to true when an album check is true.
 
+   if(!searchAlbum) {
+      console.log ('Error No Input Found');
+      return collection;
+   }
+
    //search logic if user inputs object with 4 fields (artist, yearpublished, track name, album title)
    if (searchAlbum.artist && searchAlbum.yearPublished && searchAlbum.name && searchAlbum.title) { //if find input of all accepted fields in object artists, year, and track objects.
       inputMatch = true;
@@ -519,3 +524,7 @@ console.log ('#4: Searching for Year Published: 3000', search({ yearPublished:39
 console.log ('#4: Searching for Artist: Wheezer', search({ artist:'Wheezer'}));
 console.log ('#4: Searching for Title: The White Album', search({ title:'The White Album'}));
 console.log ('#4: Searching for Track Name: Bohemian Rhapsody', search({ title:'Bohemian Rhapsody'}));
+
+//0 inputs should return collection array or error out
+console.log('0 inputs should return collection array or error out')
+console.log ('#4: Searching with no input', search());
