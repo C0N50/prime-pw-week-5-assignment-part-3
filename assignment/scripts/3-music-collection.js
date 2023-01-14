@@ -142,8 +142,89 @@ function search(searchAlbum) {
    //booleans to break from function
    inputMatch = false;  //set to true when the code block matches the input.
    found = false; //set to true when an album check is true.
-   
-   //search logic if user inputs object with all fields (artist, yearpublished, album name)
+
+   //search logic if user inputs object with 4 fields (artist, yearpublished, track name, album title)
+   if (searchAlbum.artist && searchAlbum.yearPublished && searchAlbum.name && searchAlbum.title) { //if find input of all accepted fields in object artists, year, and track objects.
+      inputMatch = true;
+      for (let album of collection) { //loop to search all albums in the collection
+         let albumTrackList = album.tracks; //local variable to store tracklist array
+         for (let albumTrack of albumTrackList) { //loop search all tracks in track list
+               if (album.artist === searchAlbum.artist && album.yearPublished === searchAlbum.yearPublished && albumTrack.name === searchAlbum.name && album.title === searchAlbum.title) { //check if any collection album fields match input fields
+                  foundAlbums.push(album); //push found album to array
+                  found = true; //set found flag to true
+               }
+         }
+      }
+      if (found) {
+         return foundAlbums;
+      }
+   }
+   //if input matches but search fails return collection
+   if (inputMatch) {
+      return collection;
+   }
+
+   //search logic if user inputs object with 3 fields (yearpublished, track name, album title)
+   if (searchAlbum.yearPublished && searchAlbum.name && searchAlbum.title) { //if find input of all accepted fields in object artists, year, and track objects.
+      inputMatch = true;
+      for (let album of collection) { //loop to search all albums in the collection
+         let albumTrackList = album.tracks; //local variable to store tracklist array
+         for (let albumTrack of albumTrackList) { //loop search all tracks in track list
+               if (album.yearPublished === searchAlbum.yearPublished && albumTrack.name === searchAlbum.name && album.title === searchAlbum.title) { //check if any collection album fields match input fields
+                  foundAlbums.push(album); //push found album to array
+                  found = true; //set found flag to true
+               }
+         }
+      }
+      if (found) {
+         return foundAlbums;
+      }
+   }
+   //if input matches but search fails return collection
+   if (inputMatch) {
+      return collection;
+   }
+
+   //search logic if user inputs object with 3 fields (artist, track name, album title)
+   if (searchAlbum.artist && searchAlbum.name && searchAlbum.title) { //if find input of all accepted fields in object artists, year, and track objects.
+      inputMatch = true;
+      for (let album of collection) { //loop to search all albums in the collection
+         let albumTrackList = album.tracks; //local variable to store tracklist array
+         for (let albumTrack of albumTrackList) { //loop search all tracks in track list
+               if (album.artist === searchAlbum.artist && albumTrack.name === searchAlbum.name && album.title === searchAlbum.title) { //check if any collection album fields match input fields
+                  foundAlbums.push(album); //push found album to array
+                  found = true; //set found flag to true
+               }
+         }
+      }
+      if (found) {
+         return foundAlbums;
+      }
+   }
+   //if input matches but search fails return collection
+   if (inputMatch) {
+      return collection;
+   }
+
+   //search logic if user inputs object with 3 fields (artist, yearpublished, album title)
+   if (searchAlbum.artist && searchAlbum.yearPublished && searchAlbum.title) { //if find input of all accepted fields in object artists, year, and track objects.
+      inputMatch = true;
+      for (let album of collection) { //loop to search all albums in the collection
+               if (album.artist === searchAlbum.artist && album.yearPublished === searchAlbum.yearPublished && album.title === searchAlbum.title) { //check if any collection album fields match input fields
+                  foundAlbums.push(album); //push found album to array
+                  found = true; //set found flag to true
+               }
+         }
+      if (found) {
+         return foundAlbums;
+      }
+   }
+   //if input matches but search fails return collection
+   if (inputMatch) {
+      return collection;
+   }
+
+   //search logic if user inputs object with 3 fields (artist, yearpublished, track name)
    if (searchAlbum.artist && searchAlbum.yearPublished && searchAlbum.name) { //if find input of all accepted fields in object artists, year, and track objects.
       inputMatch = true;
       for (let album of collection) { //loop to search all albums in the collection
@@ -335,10 +416,18 @@ console.log('\n\n');
 
 //test cases for Search functionality
 
+//4 inputs should return search
+
+
 //3 inputs should return search
 console.log('3 Inputs: Should return search')
 console.log ('#4: Searching for title, artist, & year: C0N50 & 2022', search({ title:'Halcyon Drift', artist:'C0N50', yearPublished:2022 }));
 console.log ('#4: Searching for Artist, Year Published, & Track: Coldplay, 2000, & Shiver', search({ artist:'Coldplay', yearPublished:2000, name:'Shiver' }));
+console.log('\n\n');
+
+//3 inputs should return collection array
+console.log('3 Inputs: Should return collection array')
+console.log ('#4: Searching for Artist, Year Published, & Track: Nirvana, 1991, & In Bloom', search({ artist:'Nirvana', yearPublished:1991, name:'In Bloom' }));
 console.log('\n\n');
 
 //2 inputs should return search
@@ -363,6 +452,7 @@ console.log ('#4: Searching for Title: Led Zeppelin IV', search({ title:'Led Zep
 console.log ('#4: Searching for artist: The Beatles', search({ artist:'The Beatles' }));
 console.log ('#4: Searching for Year Published: year:2000', search({ yearPublished:2000 }));
 console.log('\n\n');
+
 //1 input should return collection array
 console.log('1 input should return collection array')
 console.log ('#4: Searching for Year Published: 3000', search({ yearPublished:3999 }));
