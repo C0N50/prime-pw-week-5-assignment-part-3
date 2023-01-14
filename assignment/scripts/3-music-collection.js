@@ -1,14 +1,34 @@
 console.log('***** Music Collection *****')
 console.log('\n\n');
 
+//Declaring Global Variables
+
+//declaring collection array
 let collection = [];
+
+//delcaring track list arrays
+let parachutesList = 
+[{name: 'Don\'t Panic', duration: '2:16'}, 
+{name: 'Shiver', duration: '5:04'},
+{name: 'Spies', duration: '5:18'},
+{name: 'Sparks', duration: '3:47'},
+{name: 'Yellow', duration: '4:26'},
+{name: 'Trouble', duration: '4:33'},
+{name: 'Parachutes', duration: '0:46'},
+{name: 'High Speed', duration: '4:16'},
+{name: 'We Never Change', duration: '4:09'},
+{name: 'Everything\'s Not Lost - Includes Hidden Track \'Life Is For Living\'', duration: '7:16'}
+];
+
+
+
 
 function addToCollection(title, artist, yearPublished, tracks) {
    let album = { 
-    title: title,
-    artist: artist,
-    yearPublished: yearPublished, 
-    tracks: []
+      title: title,
+      artist: artist,
+      yearPublished: yearPublished, 
+      tracks: tracks
    };
    collection.push(album);
    return album;
@@ -62,21 +82,6 @@ function search(searchAlbum) {
       return collection;
    }
 }
-
-//delcaring track list arrays
-let parachutesList = 
-[{name: 'Don\'t Panic', duration: '2:16'}, 
-{name: 'Shiver', duration: '5:04'},
-{name: 'Spies', duration: '5:18'},
-{name: 'Sparks', duration: '3:47'},
-{name: 'Yellow', duration: '4:26'},
-{name: 'Trouble', duration: '4:33'},
-{name: 'Parachutes', duration: '0:46'},
-{name: 'High Speed', duration: '4:16'},
-{name: 'We Never Change', duration: '4:09'},
-{name: 'Everything\'s Not Lost - Includes Hidden Track \'Life Is For Living\'', duration: '7:16'}
-];
-
 
 //test track list functionality
 console.log('Parachutes Tracklist:', parachutesList);
