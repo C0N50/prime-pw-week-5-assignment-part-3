@@ -361,7 +361,7 @@ function search(searchAlbum) {
       return collection;
    }
 
-   
+
    //logic if user inputs object with 1 field (track name)
    if (searchAlbum.name) { //if find input of all accepted fields in object artists, year, and track objects.
       inputMatch = true;
@@ -470,8 +470,16 @@ console.log('\n\n');
 
 //4 inputs should return search
 console.log('4 Inputs: Should return search')
-console.log ('#4: Searching for title, artist, & year, & Track: C0N50 & 2022', search({ name:'Stairway to Heaven', title:'Led Zeppelin IV', artist:'Led Zeppelin', yearPublished:1971 }));
+console.log ('#4: Searching for title, artist, & year, & Track: Stairway to Heaven, Led Zeppelin IV, Led Zeppelin, & 1971', search({ name:'Stairway to Heaven', title:'Led Zeppelin IV', artist:'Led Zeppelin', yearPublished:1971 }));
+console.log ('#4: Searching for title, artist, & year, & Track: Come Together, Abbey Road, The Beatles, & 1969', search({ name:'Come Together', title:'Abbey Road', artist:'The Beatles', yearPublished:1969 }));
 console.log('\n\n');
+
+//4 inputs should return collection array
+console.log('4 Inputs: Should return collection array')
+console.log ('#4: Searching for title, artist, & year, & Track: Come Together, Parachutes, C0N50, & 2000', search({ name:'Come Together', title:'Parachutes', artist:'C0N50', yearPublished:2000 }));
+console.log ('#4: Searching for title, artist, & year, & Track: Come Together, Abbey Road, The Beatles, & 2022', search({ name:'Come Together', title:'Abbey Road', artist:'The Beatles', yearPublished:2022 }));
+console.log('\n\n');
+
 
 //3 inputs should return search
 console.log('3 Inputs: Should return search')
