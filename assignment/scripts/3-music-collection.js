@@ -330,7 +330,7 @@ function search(searchAlbum) {
    if (searchAlbum.artist && searchAlbum.title) {
       inputMatch = true;
       for (let album of collection) {
-         if (album.artist === searchAlbum.artist && album.yearPublished === searchAlbum.title) {
+         if (album.artist === searchAlbum.artist && album.title === searchAlbum.title) {
             foundAlbums.push(album);
             found = true;
          }
@@ -463,7 +463,9 @@ console.log('\n\n');
 //test cases for findByArtist functionality
 console.log ('#3: Find by artist Coldplay, Found:', findByArtist('Coldplay'));
 console.log ('#3: Find by The Beatles, Found:', findByArtist('The Beatles'));
-console.log ('#3: Find by The Beatles, Found:', findByArtist('AC/DC'));
+console.log ('#3: Find by Led Zeppelin, Found:', findByArtist('Led Zeppelin'));
+console.log ('#3: Find by C0N50, Found:', findByArtist('C0N50'));
+console.log ('#3: Find by AD/DC, Found:', findByArtist('AC/DC'));
 console.log('\n\n');
 
 //test cases for Search functionality
@@ -472,6 +474,7 @@ console.log('\n\n');
 console.log('4 Inputs: Should return search')
 console.log ('#4: Searching for title, artist, & year, & Track: Stairway to Heaven, Led Zeppelin IV, Led Zeppelin, & 1971', search({ name:'Stairway to Heaven', title:'Led Zeppelin IV', artist:'Led Zeppelin', yearPublished:1971 }));
 console.log ('#4: Searching for title, artist, & year, & Track: Come Together, Abbey Road, The Beatles, & 1969', search({ name:'Come Together', title:'Abbey Road', artist:'The Beatles', yearPublished:1969 }));
+console.log ('#4: Searching for title, artist, & year, & Track: Come Together, Abbey Road, The Beatles, & 1969', search({ favorite:true, name:'Eleanor Rigby', title:'Revolver', artist:'The Beatles', yearPublished:1966 })); //tested with extra trash input. Still works.
 console.log('\n\n');
 
 //4 inputs should return collection array
@@ -485,27 +488,36 @@ console.log('\n\n');
 console.log('3 Inputs: Should return search')
 console.log ('#4: Searching for title, artist, & year: C0N50 & 2022', search({ title:'Halcyon Drift', artist:'C0N50', yearPublished:2022 }));
 console.log ('#4: Searching for Artist, Year Published, & Track: Coldplay, 2000, & Shiver', search({ artist:'Coldplay', yearPublished:2000, name:'Shiver' }));
+console.log ('#4: Searching for Artist, Year Published, & Track: Kid A, 2000, & Kid A', search({ title:'Kid A', yearPublished:2000, name:'Kid A' }));
+console.log ('#4: Searching for Artist, Year Published, & Track: Revolver, The Beatles, & Tomorrow Never Knows', search({ title:'Revolver', artist:'The Beatles', name:'Tomorrow Never Knows' }));
 console.log('\n\n');
 
 //3 inputs should return collection array
 console.log('3 Inputs: Should return collection array')
 console.log ('#4: Searching for Artist, Year Published, & Track: Nirvana, 1991, & In Bloom', search({ artist:'Nirvana', yearPublished:1991, name:'In Bloom' }));
+console.log ('#4: Searching for Artist, Year Published, & Track: Kid A, 2000, & Parachutes', search({ title:'Kid A', yearPublished:2000, name:'Parachutes' }));
+console.log ('#4: Searching for title, artist, & year: All The Small Things, Blink 182, & 2022', search({ title:'All The Small Things', artist:'Blink 182', yearPublished:2022 }));
+console.log ('#4: Searching for Artist, Year Published, & Track: Sticky Fingers, The Rollingstones, & Wild Horses', search({ title:'Sticky Fingers', artist:'The Rollingstones', name:'Wild Horses' }));
 console.log('\n\n');
 
 //2 inputs should return search
 console.log('2 Inputs: Should return search')
-console.log ('#4: Searching for Year Published & Track: 1966 & Taxman', search({ yearPublished:1966, name:'Taxman'}));
+console.log ('#4: Searching for title & year: Halcyon Drift & 2022:', search({ title:'Halcyon Drift', yearPublished:2022 }));
+console.log ('#4: Searching for title & year: Led Zeppelin & Led Zeppelin:', search({ title:'Led Zeppelin IV', artist:'Led Zeppelin' }));
+console.log ('#4: Searching for title & Track: Halcyon Drift & Porcelain Rain:', search({ title:'Halcyon Drift', name:'Porcelain Rain' }));
 console.log ('#4: Searching for Artist & Year Published: The Beatles & 1969', search({ artist:'The Beatles', yearPublished:1969}));
 console.log ('#4: Searching for Artist & Track: The Beatles & Come Together', search({ artist:'The Beatles', name:'Come Together'}));
-console.log ('#4: Searching for artist & year: Radiohead & 2000:', search({ artist:'Radiohead', yearPublished:2000 }));
-console.log ('#4: Searching for title & year: Halcyon Drift & 2022:', search({ title:'Halcyon Drift', yearPublished:2022 }));
+console.log ('#4: Searching for Year Published & Track: 1966 & Taxman', search({ yearPublished:1966, name:'Taxman'}));
 console.log('\n\n');
 
 //2 inputs should return collection array
 console.log('2 inputs should return collection array')
-console.log ('#4: Searching for artist & year Published: The Beatles & 1999', search({ artist:'The Beatles', yearPublished:1999 }));
+console.log ('#4: Searching for title & year: In rain & 2007:', search({ title:'In Rainbows', yearPublished:2007 }));
+console.log ('#4: Searching for title & artist: Led Zeppelin II & Led Zeppelin:', search({ title:'Led Zeppelin II', artist:'Led Zeppelin' }));
+console.log ('#4: Searching for title & name: The Beatles & I Am The Walrus', search({ title:'The Beatles', name:'I Am The Walrus' }));
 console.log ('#4: Searching for artist & year Published: Radiohead & 2006', search({ artist:'Radiohead', yearPublished:2006 }));
-console.log ('#4: Searching for artist & year Published: U2 & 2000', search({ artist:'U2', yearPublished:2000 }));
+console.log ('#4: Searching for artist & year Published: U2 & Beautiful Day', search({ artist:'U2', name:'Beautiful Day' }));
+console.log ('#4: Searching for Year Published & Track: 1956 & Hound Dog', search({ yearPublished:1956, name:'Hound Dog'}));
 console.log('\n\n');
 
 
@@ -526,5 +538,5 @@ console.log ('#4: Searching for Track Name: Bohemian Rhapsody', search({ title:'
 console.log('\n\n');
 
 //0 inputs should return collection array or error out
-console.log('0 inputs should return collection array or error out')
+console.log('0 inputs should return collection array and throw error')
 console.log ('#4: Searching with no input', search());
